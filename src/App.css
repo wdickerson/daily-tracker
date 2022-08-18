@@ -1,0 +1,88 @@
+:root {
+  --lighterGray: #e9f1f8;
+  --lightGray: #dee5eb;
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+}
+
+.Header {
+  display: flex;
+  font-size: 32px;
+  padding: 6px;
+  font-family: Tahoma, Verdana, sans-serif;
+}
+
+.HeaderText {
+  flex: 1;
+}
+
+.DayRows {
+  width: 100%;
+  max-width: 480px;
+  flex: 1;
+  overflow-y: scroll;
+  padding: 12px 0;
+}
+
+.DayRow {
+  display: flex;
+  justify-content: center;
+  xpadding: 0 0 12px 0;
+  border-bottom: 1px solid var(--lightGray);
+}
+
+.DayLabel {
+  width: 92px;
+  text-align: center;
+  padding: 12px 0;
+  background-color: var(--lighterGray);
+  /* background-color: beige; */
+}
+
+.DayLabelMonth {
+  text-align: center;
+  font-size: 9px;
+  height: 10px;
+  font-weight: 600;
+}
+
+.DayLabelNumber {
+  font-size: 24px;
+  padding: 3px 0;
+}
+
+.DayLabelDay {
+  font-size: 10px;
+}
+
+.DayCounter {
+  flex: 1;
+  padding: 18px 30px;
+  display: flex;
+}
+
+.CounterButton {
+  width: 42px;
+  height: 42px;
+}
+
+.CounterEmptyText {
+  line-height: 44px;
+  font-size: 14px;
+  text-align: center;
+  margin: 0 8px;
+  flex-grow: 1;
+}
+
+.CounterText {
+  line-height: 44px;
+  font-size: 30px;
+  text-align: center;
+  margin: 0 8px;
+  flex-grow: 1;
+}
