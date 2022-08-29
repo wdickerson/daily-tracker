@@ -3,10 +3,12 @@ import { ReactComponent as Plus } from './Plus.svg';
 
 import React, { useState } from 'react';
 
-const DayRow = ({day, value, valueIndex, updateValue}) => {
-  const [myValue, setMyValue] = useState(value);
+const DayRow = ({day, updateValue, weekValue, monthValue, tomorrow}) => {
 
-  const date = day;
+  const { date, dayCounter, weekCounter, monthCounter } = day;
+
+  const [myValue, setMyValue] = useState(dayCounter.encodedValue);
+
   const months = [
     'Jan',
     'Feb',
@@ -27,35 +29,45 @@ const DayRow = ({day, value, valueIndex, updateValue}) => {
   const monthText = date.getDate() === 1 ? `${months[date.getMonth()]} ${date.getFullYear()}` : '';
 
   const decrement = () => {
-    if (myValue < 0) return;
-    updateValue(valueIndex, myValue - 1);
-    setMyValue(myValue - 1);
+    dayCounter.decrement();
+    if (dayCounter.recorded) weekCounter.decrement();
+    if (dayCounter.recorded) monthCounter.decrement();
+    const newValue = dayCounter.encodedValue;
+    setMyValue(newValue);
+    updateValue();
   }
 
   const increment = () => {
-    updateValue(valueIndex, myValue + 1);
-    setMyValue(myValue + 1);
+    if (dayCounter.recorded) weekCounter.increment();
+    if (dayCounter.recorded) monthCounter.increment();
+    dayCounter.increment();
+    const newValue = dayCounter.encodedValue;
+    setMyValue(newValue);
+    updateValue();
   }
 
   return (
-      <div className='DayRow'>
-        <div className='DayLabel'>
-          <div className="DayLabelMonth">{monthText}</div>
-          <div className="DayLabelNumber">{date.getDate()}</div>
-          <div className="DayLabelDay">{days[date.getDay()]}</div>
-        </div>
-        <div className='DayCounter'>
-          <div className="CounterButton" onClick={() => decrement(day)}>
-            <Minus />
+      <>
+        <div className='DayRow'>
+          <div className='DayLabel'>
+            <div className="DayLabelMonth">{monthText}</div>
+            <div className="DayLabelNumber">{date.getDate()}</div>
+            <div className="DayLabelDay">{days[date.getDay()]}</div>
           </div>
-          {myValue === 0 && <div className="CounterEmptyText">No entry</div>}
-          {myValue < 0 && <div className="CounterText">0</div>}
-          {myValue > 0 && <div className="CounterText">{myValue}</div>}
-          <div className="CounterButton" onClick={() => increment(day)}>
-            <Plus />
-          </div>
+          <div className='DayCounter'>
+            <div className="CounterButton" onClick={() => decrement(date)}>
+              <Minus />
+              </div>
+                {myValue === '' && <div className="CounterEmptyText">No entry</div>}
+                {myValue !== '' && <div className="CounterText">{myValue}</div>}
+              <div className="CounterButton" onClick={increment}>
+              <Plus />
+            </div>
+          </div> 
         </div>
-      </div>
+        {date.getDay() === 0 && <div>Week Total: {weekValue}</div>}
+        {tomorrow && tomorrow.date.getDate() === 1 && <div>Month Total: {monthValue}</div>}
+      </>
   );
 };
 
