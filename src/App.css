@@ -1,6 +1,8 @@
 :root {
-  --lighterGray: #e9f1f8;
-  --lightGray: #dee5eb;
+  --lighterGray: #e7eff7;
+  --lightGray: #e2e9f0;
+  --gray: #c9dae8;
+  --darkGray: #727679;
 }
 
 .App {
@@ -32,7 +34,6 @@
 .DayRow {
   display: flex;
   justify-content: center;
-  xpadding: 0 0 12px 0;
   border-bottom: 1px solid var(--lightGray);
 }
 
@@ -41,7 +42,6 @@
   text-align: center;
   padding: 12px 0;
   background-color: var(--lighterGray);
-  /* background-color: beige; */
 }
 
 .DayLabelMonth {
@@ -85,4 +85,20 @@
   text-align: center;
   margin: 0 8px;
   flex-grow: 1;
+}
+
+.WeekSummary {
+  text-align: center;
+  padding: 4px 0;
+  background-color: var(--lightGray);
+}
+
+.MonthSummary {
+  text-align: center;
+  padding: 4px 0;
+  background-color: var(--gray);
+}
+
+.SummaryLabel {
+  color: var(--darkGray);
 }

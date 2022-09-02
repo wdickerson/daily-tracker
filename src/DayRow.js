@@ -46,6 +46,24 @@ const DayRow = ({day, updateValue, weekValue, monthValue, tomorrow}) => {
     updateValue();
   }
 
+  const weekTotal = () => (
+    <div className="WeekSummary">
+      <span className="SummaryLabel">
+        Week ending Sun, {date.getDate()} {months[date.getMonth()]}:&nbsp;
+      </span> 
+      {weekValue}
+    </div>
+  )
+
+  const monthTotal = () => (
+    <div className="MonthSummary">
+      <span className="SummaryLabel">
+        Month of {months[date.getMonth()]} {date.getFullYear()}:&nbsp;
+      </span> 
+      {monthValue}
+    </div>
+  )
+
   return (
       <>
         <div className='DayRow'>
@@ -65,8 +83,8 @@ const DayRow = ({day, updateValue, weekValue, monthValue, tomorrow}) => {
             </div>
           </div> 
         </div>
-        {date.getDay() === 0 && <div>Week Total: {weekValue}</div>}
-        {tomorrow && tomorrow.date.getDate() === 1 && <div>Month Total: {monthValue}</div>}
+        {date.getDay() === 0 && weekTotal()}
+        {tomorrow && tomorrow.date.getDate() === 1 && monthTotal()}
       </>
   );
 };
