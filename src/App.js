@@ -56,15 +56,30 @@ function App() {
   const [monthValues, setMonthValues] = useState([]);
 
   useEffect(() => {
-    const rawValues = localStorage.getItem('trackerValues');
+    const rawValues = localStorage.getItem('trackerValues_v1');
     const savedValues = rawValues ? rawValues.split(',') : [];
+
+    // If a start date is in localStorage, use it.
+    // Otherwise, use the first day of the current month.
+    // Then save the start date to local storage.
+    const firstOfMonth = new Date();
+    firstOfMonth.setDate(1);
+    const savedStartDate = localStorage.getItem('startDate_v1') || firstOfMonth.toISOString().split('T')[0];
+    const _year = Number(savedStartDate.split('-')[0]);
+    const _month = Number(savedStartDate.split('-')[1]) - 1;
+    const _day = Number(savedStartDate.split('-')[2]);
+    const currentDate = new Date(_year, _month, _day);
+    localStorage.setItem('startDate_v1', currentDate.toISOString().split('T')[0]); 
+
+    // Show 38 days beyond today (chosen arbitrarily)
+    const endDate = new Date();
+    endDate.setDate(endDate.getDate() + 38);
+
+    // Initialize the list of days (with their saved values, if any)
     const _days = [];
-    const oneMonthFromNow = new Date();
-    const currentDate = new Date(2022, 4, 1);
-    oneMonthFromNow.setDate(oneMonthFromNow.getDate() + 30);
     let weekCounter = new Counter();
     let monthCounter = new Counter();
-    while (currentDate < oneMonthFromNow) {
+    while (currentDate < endDate) {
       const dayCounter = new DayCounter(savedValues.shift())
       weekCounter.increment(dayCounter.value);
       monthCounter.increment(dayCounter.value);
@@ -86,7 +101,7 @@ function App() {
   const updateValue = () => {
     setWeekValues(days.map(day => day.weekCounter.value));
     setMonthValues(days.map(day => day.monthCounter.value));
-    localStorage.setItem('trackerValues', days.map(d => d.dayCounter.encodedValue).join(','));
+    localStorage.setItem('trackerValues_v1', days.map(d => d.dayCounter.encodedValue).join(','));
   }
 
   return (

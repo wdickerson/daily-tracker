@@ -1,4 +1,4 @@
-# Habit Tracker
+# Daily Tracker
 
 Shows a list of days and values, and allows users to increment or decrement the values. Stores values in browser's localstorage.
 

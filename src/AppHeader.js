@@ -1,7 +1,7 @@
 const AppHeader = () => {
   return (
       <div className='Header'>
-        <div className='HeaderText'>Habit Tracker</div>
+        <div className='HeaderText'>Daily Tracker</div>
       </div>
   );
 };
