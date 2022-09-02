@@ -75,10 +75,10 @@ const DayRow = ({day, updateValue, weekValue, monthValue, tomorrow}) => {
           <div className='DayCounter'>
             <div className="CounterButton" onClick={() => decrement(date)}>
               <Minus />
-              </div>
-                {myValue === '' && <div className="CounterEmptyText">No entry</div>}
-                {myValue !== '' && <div className="CounterText">{myValue}</div>}
-              <div className="CounterButton" onClick={increment}>
+            </div>
+            {myValue === '' && <div className="CounterEmptyText">No entry</div>}
+            {myValue !== '' && <div className="CounterText">{myValue}</div>}
+            <div className="CounterButton" onClick={increment}>
               <Plus />
             </div>
           </div> 

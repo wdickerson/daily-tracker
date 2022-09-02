@@ -9,25 +9,24 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 100vh;
+  margin: auto;
+  max-width: 480px;
+  /* height: 100vh; */
 }
 
 .Header {
-  display: flex;
+  position: sticky;
+  top: 0;
+  width: 100%;
+  text-align: center;
+  background-color: white;
   font-size: 32px;
   padding: 6px;
   font-family: Tahoma, Verdana, sans-serif;
 }
 
-.HeaderText {
-  flex: 1;
-}
-
 .DayRows {
   width: 100%;
-  max-width: 480px;
-  flex: 1;
-  overflow-y: scroll;
   padding: 12px 0;
 }
 
