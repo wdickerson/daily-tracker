@@ -15,19 +15,21 @@
 }
 
 .Header {
-  position: sticky;
+  position: fixed;
   top: 0;
   width: 100%;
   text-align: center;
   background-color: white;
   font-size: 32px;
+  height: 48px;
   padding: 6px;
+  box-sizing: border-box;
   font-family: Tahoma, Verdana, sans-serif;
 }
 
 .DayRows {
   width: 100%;
-  padding: 12px 0;
+  padding: 48px 0 12px;
 }
 
 .DayRow {
