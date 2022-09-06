@@ -123,6 +123,10 @@ function App() {
           )
         }
       </div>
+      <div className="Footer">
+        <a href="https://littleapp.io">littleapp.io</a>
+        <a href="https://littleapp.io/privacy-policy">Privacy Policy</a>
+      </div>
     </div>
   );
 }
