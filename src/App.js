@@ -124,6 +124,11 @@ function App() {
         }
       </div>
       <div className="Footer">
+        <p className="About">
+          Tracking a habit or running a tab? 
+          Daily Tracker is a place to keep count of anything. 
+          Careful, you will lose this data if you clear your browser's local storage.
+        </p>
         <a href="https://littleapp.io">littleapp.io</a>
         <a href="https://littleapp.io/privacy-policy">Privacy Policy</a>
       </div>

@@ -11,12 +11,9 @@
   align-items: center;
   margin: auto;
   max-width: 480px;
-  /* height: 100vh; */
 }
 
 .Header {
-  position: fixed;
-  top: 0;
   width: 100%;
   text-align: center;
   background-color: white;
@@ -29,7 +26,7 @@
 
 .DayRows {
   width: 100%;
-  padding: 48px 0 12px;
+  padding: 0 0 12px;
 }
 
 .DayRow {
@@ -108,6 +105,11 @@
   color: var(--darkGray);
   padding: 4px 0 16px;
   text-align: center;
+}
+
+.About {
+  padding: 4px 28px;
+  line-height: 140%;
 }
 
 .Footer a {
